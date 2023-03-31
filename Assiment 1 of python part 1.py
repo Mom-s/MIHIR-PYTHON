@@ -1,46 +1,34 @@
 #mihirs program
-print("___ ___  ____")
+def calculate_bill(cleaning, cavity_filling, x_ray):
+    subtotal = 0
+    if cleaning == 'y':
+        subtotal += 60
+    if cavity_filling == 'y':
+        subtotal += 200
+    if x_ray == 'y':
+        subtotal += 100
+    tax = subtotal * 0.15
+    total = subtotal + tax
+    if total > 300:
+        total *= 0.9
+    elif total > 200:
+        total *= 0.95
+    return total
 
-print("|   |   ||    \ ")
+name = input("Enter patient's name: ")
+cleaning = input("Was cleaning performed? (y/n): ")
+cavity_filling = input("Was cavity-filling performed? (y/n): ")
+x_ray = input("Was X-Ray performed? (y/n): ")
 
-print("| _   _ ||  o  )")
+total = calculate_bill(cleaning, cavity_filling, x_ray)
 
-print("|  \_/  ||   _/")
-
-print("|   |   ||  |")
-
-print("|   |   ||  |")
-print("|___|___||__|")
-
-print("\n")
-count=0
-output=0
-print(("Melanie Dental Clinic").center(100))
-Patientname=input(("Enter patient's name: "))
-Cleaning=input("Was cleaning performed? (y/n): ")
-Cavity=input("Was cavity-filling performed? (y/n): ") 
-x_ray=input("Was X-Ray performed? (y/n): ")
-if Cleaning=="y":
-    count+=60
-if Cavity=="y":
-    count+=200
-if x_ray=="y":
-    count+=100
-
-if count>300:
-    count=count-count*(0.10)
-elif count>200:
-    count=count-count*(0.5)
-else:
-    pass
-output=count*0.15
-print("\n")
 print("Melanie Dental Clinic")
-print(("-"*150).center(100))
-print("Receipt for patient name: ",Patientname)
-print("-"*150)
-print(" Subtotal: ",count)
-print("      Tax: ",output)
-print("-"*150)
-print("    total: ",count+output)
+print("Patient name:", name)
+print("Cleaning:", cleaning)
+print("Cavity-filling:", cavity_filling)
+print("X-Ray:", x_ray)
+print("Subtotal:", '$' + str(subtotal))
+print("Tax:", '$' + str(tax))
+print("Total:", '$' + str(total))
+
 
